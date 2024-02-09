@@ -8,32 +8,25 @@
   ],
   "scripts": {
     "lint": "standardx -v \"./**/*.ts\"",
-    "build-tests": "esbuild test/index.ts --target=es2020 --bundle --keep-names > test/test-bundle.js",
-    "test": "npm run lint && npm run build && npm run build-tests && npm run test-tape-run",
-    "test-tape-run": "cat test/index.html | tape-run --input=html --static=test | tap-arc",
+    "build-tests": "esbuild test/index.ts --format=esm --target=es2020 --bundle --keep-names > test/test-bundle.js",
+    "test": "npm run test-main && npm run test-next",
+    "test-main": "esbuild ./test/index.ts --format=esm --platform=node --bundle --keep-names | node --input-type=module",
+    "test-next": "esbuild ./test/next.ts --format=esm --platform=node --bundle --keep-names | node --input-type=module",
     "build-cjs": "esbuild src/*.ts --format=cjs --tsconfig=tsconfig.build.json --keep-names --outdir=./dist --out-extension:.js=.cjs",
     "build": "mkdir -p ./dist && rm -rf ./dist/* && npm run build-cjs && tsc --project tsconfig.build.json",
-    "start": "vite",
     "preversion": "npm run lint",
     "version": "auto-changelog -p --template keepachangelog --breaking-pattern 'BREAKING CHANGE:' && git add CHANGELOG.md",
     "postversion": "git push --follow-tags && npm publish",
     "prepublishOnly": "npm run build"
   },
-  "dependencies": {},
   "devDependencies": {
-    "@nichoth/debug": "^0.5.0",
-    "@nichoth/tapzero": "^0.8.4",
     "@preact/preset-vite": "^2.8.1",
+    "@types/node": "^20.11.17",
     "@typescript-eslint/parser": "^6.20.0",
     "auto-changelog": "^2.4.0",
     "esbuild": "^0.20.0",
-    "postcss-nesting": "^12.0.2",
-    "preact": "^10.19.3",
     "standardx": "^7.0.0",
-    "tap-arc": "^1.2.2",
-    "tape-run": "^11.0.0",
-    "typescript": "^5.3.3",
-    "vite": "^5.0.12"
+    "typescript": "^5.3.3"
   },
   "exports": {
     ".": {
