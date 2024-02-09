@@ -1,24 +1,63 @@
 # template ts browser
-![tests](https://github.com/nichoth/template-ts-browser/actions/workflows/nodejs.yml/badge.svg)
-[![types](https://img.shields.io/npm/types/@nichoth/catch-links?style=flat-square)](README.md)
+![tests](https://github.com/nichoth/routes/actions/workflows/nodejs.yml/badge.svg)
 [![module](https://img.shields.io/badge/module-ESM%2FCJS-blue?style=flat-square)](README.md)
 [![license](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
 
-A template for typescript *dependency* modules that run in a browser environment. Uses `tape-run` for tests in a browser. See [template-ts](https://github.com/nichoth/template-ts) for the same thing but targeting Node.
+Route matcher devised for shared rendering JavaScript applications
 
-## use
-1. Use the template button in github. Or clone this then `rm -rf .git && git init`. Then `npm i && npm init`.
+## install
+```
+npm install -S @nichoth/routes
+```
 
-2. Edit the source code in `src/index.ts`.
+## ESM vs CJS
+Featuring ESM & CJS versions via `package.json` `exports` field.
 
-## featuring
+```js
+// esm
+import Router from '@nichoth/routes'
+```
 
-* compile the source to both ESM and CJS format, and put compiled files in `dist`.
-* ignore `dist` and `*.js` in git, but don't ignore them in npm. That way we don't commit any compiled code to git, but it is available to consumers.
-* use npm's `prepublishOnly` hook to compile the code before publishing to npm.
-* use `exports` field in `package.json` to make sure the right format is used by consumers.
-* `preversion` npm hook -- lint via `standardx`.
-* `postversion` npm hook -- `git push && git push --tags && npm publish`
-* eslint via [standardx](https://www.npmjs.com/package/standardx) -- `npm run lint`
-* tests run in a browser environment via `tape-run` -- see `npm test`. Includes `tap` testing tools -- [tapzero](https://github.com/nichoth/tapzero) and [tap-arc](https://www.npmjs.com/package/tap-arc)
-* CI via github actions
+```js
+// cjs
+const Router = require('@nichoth/routes').default
+```
+
+## example
+Get a router instance
+
+```js
+const Router = require('@nichoth/routes').default
+var router = new Router()
+```
+
+Add some routes
+```js
+router.addRoute('/articles', getArticles);
+router.addRoute('/articles/:slug', getArticleBySlug);
+router.addRoute('/articles/search/*', searchForArticles);
+```
+
+Find a match
+
+```js
+router.match('/articles');
+```
+
+You'll get `null` back if no route matches the provided URL. Otherwise, the
+route match will provide all the useful information you need inside an object.
+
+Key               | Description
+------------------|---------------------------------------------------------------------------------------
+`action`          | The action passed to `addRoute` as a second argument. Using a function is recommended
+`next`            | Fall through to the next route, or `null` if no other routes match
+`route`           | The route passed to `addRoute` as the first argument
+`params`          | An object containing the values for named parameters in the route
+`splats`          | An object filled with the values for wildcard parameters
+
+## License
+
+MIT
+
+## fork
+This is a fork of [ruta3](https://www.npmjs.com/package/ruta3), just adding types.
