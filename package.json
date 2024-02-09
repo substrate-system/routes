@@ -2,7 +2,7 @@
   "name": "@nichoth/routes",
   "description": "Route matcher devised for shared rendering JavaScript applications",
   "type": "module",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "main": "dist/index.js",
   "files": [
     "./dist/*"
@@ -51,8 +51,7 @@
   "directories": {
     "test": "test"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nichoth/routes.git"
