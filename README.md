@@ -1,17 +1,18 @@
 # template ts browser
 ![tests](https://github.com/nichoth/routes/actions/workflows/nodejs.yml/badge.svg)
+[![dependencies](https://img.shields.io/badge/dependencies-zero-brightgreen.svg?style=flat-square)](package.json)
 [![module](https://img.shields.io/badge/module-ESM%2FCJS-blue?style=flat-square)](README.md)
 [![license](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
 
 Route matcher devised for shared rendering JavaScript applications
 
 ## install
-```
+```sh
 npm install -S @nichoth/routes
 ```
 
 ## ESM vs CJS
-Featuring ESM & CJS versions via `package.json` `exports` field.
+Featuring ESM or CJS versions via `package.json` `exports` field.
 
 ```js
 // esm

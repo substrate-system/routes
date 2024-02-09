@@ -1,7 +1,8 @@
 {
-  "private": true,
+  "name": "@nichoth/routes",
+  "description": "Route matcher devised for shared rendering JavaScript applications",
   "type": "module",
-  "version": "0.0.0",
+  "version": "4.0.0",
   "main": "dist/index.js",
   "files": [
     "./dist/*"
@@ -46,5 +47,24 @@
     }
   },
   "author": "nichoth <nichoth@gmail.com> (https://nichoth.com)",
-  "license": "MIT"
+  "license": "MIT",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nichoth/routes.git"
+  },
+  "keywords": [
+    "router",
+    "routes",
+    "client-side",
+    "browser"
+  ],
+  "bugs": {
+    "url": "https://github.com/nichoth/routes/issues"
+  },
+  "homepage": "https://github.com/nichoth/routes#readme"
 }
