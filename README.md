@@ -1,4 +1,4 @@
-# template ts browser
+# routes
 ![tests](https://github.com/nichoth/routes/actions/workflows/nodejs.yml/badge.svg)
 [![dependencies](https://img.shields.io/badge/dependencies-zero-brightgreen.svg?style=flat-square)](package.json)
 [![module](https://img.shields.io/badge/module-ESM%2FCJS-blue?style=flat-square)](README.md)
