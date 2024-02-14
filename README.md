@@ -30,21 +30,39 @@ const Router = require('@nichoth/routes').default
 Get a router instance
 
 ```js
-const Router = require('@nichoth/routes').default
+import Router from '@nichoth/routes'
 var router = new Router()
 ```
 
-Add some routes
+### Add some routes
 ```js
 router.addRoute('/articles', getArticles);
 router.addRoute('/articles/:slug', getArticleBySlug);
 router.addRoute('/articles/search/*', searchForArticles);
+
+// can also chain the method calls
+router
+    .addRoute('/foo', () => {/* ... */})
+    .addRoute('/bar', () => {/* ... */})
 ```
 
-Find a match
+### Find a match
 
 ```js
-router.match('/articles');
+const match = router.match('/articles');
+// => RouteMatch
+```
+
+#### The match object
+```ts
+interface RouteMatch {
+    params:Record<string, string>;  // <-- e.g. { slug: 'article-title' }
+    splats:string[];
+    route:string;
+    next?:((...any)=>any)|number;
+    action?:(...any)=>any;
+    index?:number;
+}
 ```
 
 You'll get `null` back if no route matches the provided URL. Otherwise, the
