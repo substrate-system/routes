@@ -79,11 +79,15 @@ export class Router {
     routes:Route[] = []
     routeMap:[string|RegExp, RouteHandler][] = []
 
-    addRoute (path:string|RegExp, action:RouteHandler) {
+    addRoute (
+        path:string|RegExp,
+        action:RouteHandler
+    ):InstanceType<typeof Router> {
         const route = routeInfo(path, this.routeMap?.length)
         route.action = action
         this.routes?.push(route)
         this.routeMap?.push([path, action])
+        return this
     }
 
     match (uri:string, startAt?:number):RouteMatch|null {
