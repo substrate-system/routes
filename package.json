@@ -8,7 +8,7 @@
     "./dist/*"
   ],
   "scripts": {
-    "lint": "standardx -v \"./**/*.ts\"",
+    "lint": "eslint \"./**/*.{ts,js}\"",
     "build-tests": "esbuild test/index.ts --format=esm --target=es2020 --bundle --keep-names > test/test-bundle.js",
     "test": "npm run test-main && npm run test-next",
     "test-main": "esbuild ./test/index.ts --format=esm --platform=node --bundle --keep-names | node --input-type=module",
@@ -24,10 +24,12 @@
   "devDependencies": {
     "@preact/preset-vite": "^2.8.1",
     "@types/node": "^20.11.17",
-    "@typescript-eslint/parser": "^6.20.0",
+    "@typescript-eslint/eslint-plugin": "^7.0.2",
+    "@typescript-eslint/parser": "^7.1.0",
     "auto-changelog": "^2.4.0",
-    "esbuild": "^0.20.0",
-    "standardx": "^7.0.0",
+    "esbuild": "^0.20.1",
+    "eslint": "^8.57.0",
+    "eslint-config-standard": "^17.1.0",
     "typescript": "^5.3.3"
   },
   "exports": {
