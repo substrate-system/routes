@@ -24,7 +24,7 @@
   "devDependencies": {
     "@preact/preset-vite": "^2.8.1",
     "@types/node": "^20.11.17",
-    "@typescript-eslint/parser": "^6.20.0",
+    "@typescript-eslint/parser": "^7.1.0",
     "auto-changelog": "^2.4.0",
     "esbuild": "^0.20.0",
     "standardx": "^7.0.0",
