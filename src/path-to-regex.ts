@@ -1,4 +1,4 @@
-function pathToRegExp (path, keys) {
+function pathToRegExp (path:string, keys:(number|undefined)[]):RegExp {
     path = path
         .concat('/?')
         .replace(/\/\(/g, '(?:/')

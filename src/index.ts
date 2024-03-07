@@ -57,7 +57,7 @@ function match (routes:Route[], uri:string, startAt?:number):RouteMatch|null {
 
 function routeInfo (path:string|RegExp, index:number):Route {
     let src
-    let re
+    let re:RegExp
     const keys:number[] = []
 
     if (path instanceof RegExp) {
@@ -85,7 +85,7 @@ export class Router {
     ):InstanceType<typeof Router> {
         const route = routeInfo(path, this.routeMap?.length)
         route.action = action
-        this.routes?.push(route)
+        this.routes.push(route)
         this.routeMap?.push([path, action])
         return this
     }
