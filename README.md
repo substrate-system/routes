@@ -59,7 +59,7 @@ interface RouteMatch {
     params:Record<string, string>;  // <-- e.g. { slug: 'article-title' }
     splats:string[];
     route:string;
-    next?:((...any)=>any)|number;
+    next?:((...any)=>any)|null;
     action?:(...any)=>any;
     index?:number;
 }
