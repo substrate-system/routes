@@ -4,7 +4,7 @@ export interface RouteMatch {
     params:Record<string, string>;
     splats:string[];
     route:string;
-    next?:((...any)=>any)|number;
+    next?:((...any)=>any)|null;
     action?:(...any)=>any;
     index?:number;
 }
@@ -17,7 +17,11 @@ interface Route {
     index:number;
 }
 
-function match (routes:Route[], uri:string, startAt?:number):RouteMatch|null {
+interface PendingMatch extends Omit<RouteMatch, 'next'> {
+    next:number
+}
+
+function match (routes:Route[], uri:string, startAt?:number):PendingMatch|null {
     let i = startAt || 0
 
     for (let len = routes.length; i < len; ++i) {
@@ -91,11 +95,14 @@ export class Router {
     }
 
     match (uri:string, startAt?:number):RouteMatch|null {
-        const route = match(this.routes, uri, startAt)
+        const route = match(this.routes, uri, startAt) as unknown as RouteMatch
+
         if (route) {
+            const i = route.next as unknown as number
             route.action = ((this.routeMap || [])[route.index!] || [])[1]
-            route.next = this.match.bind(this, uri, route.next as number)
+            route.next = this.match.bind(this, uri, i)
         }
+
         return route
     }
 }
