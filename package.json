@@ -1,5 +1,5 @@
 {
-  "name": "@nichoth/routes",
+  "name": "@bicycle-codes/routes",
   "description": "Route matcher devised for shared rendering JavaScript applications",
   "type": "module",
   "version": "4.0.7",
@@ -49,14 +49,13 @@
     }
   },
   "author": "nichoth <nichoth@gmail.com> (https://nichoth.com)",
-  "license": "MIT",
   "directories": {
     "test": "test"
   },
   "dependencies": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nichoth/routes.git"
+    "url": "git+https://github.com/bicycle-codes/routes.git"
   },
   "keywords": [
     "router",
@@ -65,7 +64,8 @@
     "browser"
   ],
   "bugs": {
-    "url": "https://github.com/nichoth/routes/issues"
+    "url": "https://github.com/bicycle-codes/routes/issues"
   },
-  "homepage": "https://github.com/nichoth/routes#readme"
+  "homepage": "https://github.com/bicycle-codes/routes#readme",
+  "license": "MIT"
 }
