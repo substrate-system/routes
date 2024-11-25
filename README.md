@@ -1,5 +1,5 @@
 # routes
-![tests](https://github.com/bicycle-codes/routes/actions/workflows/nodejs.yml/badge.svg)
+![tests](https://github.com/substrate-system/routes/actions/workflows/nodejs.yml/badge.svg)
 [![dependencies](https://img.shields.io/badge/dependencies-zero-brightgreen.svg?style=flat-square)](package.json)
 [![types](https://img.shields.io/npm/types/msgpackr?style=flat-square)](README.md)
 [![module](https://img.shields.io/badge/module-ESM%2FCJS-blue?style=flat-square)](README.md)
@@ -10,7 +10,7 @@ Route matcher devised for shared rendering JavaScript applications
 
 ## install
 ```sh
-npm install -S @bicycle-codes/routes
+npm install -S @substrate-system/routes
 ```
 
 ## ESM vs CJS
@@ -18,19 +18,19 @@ Featuring ESM or CJS versions via `package.json` `exports` field.
 
 ```js
 // esm
-import Router from '@bicycle-codes/routes'
+import Router from '@substrate-system/routes'
 ```
 
 ```js
 // cjs
-const Router = require('@bicycle-codes/routes').default
+const Router = require('@substrate-system/routes').default
 ```
 
 ## example
 Get a router instance
 
 ```js
-import Router from '@bicycle-codes/routes'
+import Router from '@substrate-system/routes'
 var router = new Router()
 ```
 
