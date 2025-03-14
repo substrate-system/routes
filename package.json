@@ -14,7 +14,7 @@
     "test-main": "esbuild ./test/index.ts --format=esm --platform=node --bundle --keep-names | node --input-type=module",
     "test-next": "esbuild ./test/next.ts --format=esm --platform=node --bundle --keep-names | node --input-type=module",
     "build-cjs": "esbuild src/*.ts --format=cjs --tsconfig=tsconfig.build.json --keep-names --outdir=./dist --out-extension:.js=.cjs",
-    "build-esm": "esbuild src/*.ts --format=esm --tsconfig=tsconfig.json --keep-names --outdir=./dist",
+    "build-esm": "esbuild src/*.ts --format=esm --tsconfig=tsconfig.json --keep-names --outdir=./dist && tsc --emitDeclarationOnly --project tsconfig.build.json --outDir dist",
     "build": "mkdir -p ./dist && rm -rf ./dist/* && npm run build-cjs && npm run build-esm",
     "preversion": "npm run lint",
     "version": "auto-changelog -p --template keepachangelog --breaking-pattern 'BREAKING CHANGE:' && git add CHANGELOG.md",
