@@ -34,9 +34,9 @@ function match (routes:Route[], uri:string, startAt?:number):PendingMatch|null {
 
         if (captures) {
             for (let j = 1, len = captures.length; j < len; ++j) {
-                const value = typeof captures[j] === 'string'
-                    ? decodeURIComponent(captures[j])
-                    : captures[j]
+                const value = typeof captures[j] === 'string' ?
+                    decodeURIComponent(captures[j]) :
+                    captures[j]
 
                 const key = keys[j - 1]
                 if (key) {
