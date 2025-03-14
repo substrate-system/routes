@@ -2,7 +2,7 @@
   "name": "@substrate-system/routes",
   "description": "Route matcher devised for shared rendering JavaScript applications",
   "type": "module",
-  "version": "5.0.0",
+  "version": "5.0.1",
   "main": "dist/index.js",
   "files": [
     "./dist/*"
