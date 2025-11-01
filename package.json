@@ -16,12 +16,12 @@
     "build-cjs": "esbuild src/*.ts --format=cjs --tsconfig=tsconfig.build.json --keep-names --outdir=./dist --out-extension:.js=.cjs",
     "build-esm": "esbuild src/*.ts --format=esm --tsconfig=tsconfig.json --keep-names --outdir=./dist && tsc --emitDeclarationOnly --project tsconfig.build.json --outDir dist",
     "build": "mkdir -p ./dist && rm -rf ./dist/* && npm run build-cjs && npm run build-esm",
+    "build-docs": "typedoc ./src/index.ts",
     "preversion": "npm run lint",
     "version": "auto-changelog -p --template keepachangelog --breaking-pattern 'BREAKING CHANGE:' && git add CHANGELOG.md",
     "postversion": "git push --follow-tags && npm publish",
     "prepublishOnly": "npm run build"
   },
-  "dependencies": {},
   "devDependencies": {
     "@preact/preset-vite": "^2.8.1",
     "@types/node": "^24.0.12",
@@ -31,6 +31,7 @@
     "esbuild": "^0.25.0",
     "eslint": "^8.57.0",
     "eslint-config-standard": "^17.1.0",
+    "typedoc": "^0.28.14",
     "typescript": "^5.3.3"
   },
   "exports": {
