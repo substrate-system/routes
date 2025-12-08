@@ -11,7 +11,12 @@
 
 Route matcher devised for shared rendering JavaScript applications
 
-## install
+<details><summary><h2>Contents</h2></summary>
+<!-- toc -->
+</details>
+
+
+## Install
 ```sh
 npm install -S @substrate-system/routes
 ```
@@ -29,7 +34,7 @@ import Router from '@substrate-system/routes'
 const Router = require('@substrate-system/routes').default
 ```
 
-## example
+## Example
 Get a router instance
 
 ```js
@@ -79,9 +84,6 @@ Key               | Description
 `params`          | An object containing the values for named parameters in the route
 `splats`          | An object filled with the values for wildcard parameters
 
-## License
-
-MIT
-
 ## fork
+
 This is a fork of [ruta3](https://www.npmjs.com/package/ruta3), just adding types.
