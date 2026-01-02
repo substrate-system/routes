@@ -4,20 +4,20 @@ on: [push]
 
 jobs:
   build:
-
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     timeout-minutes: 5
 
     strategy:
       matrix:
-        node-version: [18.x]
+        node-version: [22.x]
 
     steps:
     - uses: actions/checkout@v6
     - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v5
+      uses: actions/setup-node@v6
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: lts/*
+
     - name: npm install, build
       run: |
         npm install
@@ -25,6 +25,22 @@ jobs:
         npm run lint
       env:
         CI: true
-    - name: Run tests
+
+    - name: Test ${{ matrix.node-version }}
       run: |
         npm test
+    - name: Coveralls Parallel
+      uses: coverallsapp/github-action@v2
+      with:
+        flag-name: run-${{ join(matrix.*, '-') }}
+        parallel: true
+  finish:
+    needs: build
+    if: ${{ always() }}
+    runs-on: ubuntu-latest
+    steps:
+    - name: Coveralls Finished
+      uses: coverallsapp/github-action@v2
+      with:
+        parallel-finished: true
+        carryforward: "run-1,run-2"
